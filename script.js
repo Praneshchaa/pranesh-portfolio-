@@ -131,6 +131,7 @@ document.querySelectorAll('div').forEach(container => {
   const dots = dotsWrap ? Array.from(dotsWrap.children) : [];
   const activeBg = dots[0] ? dots[0].style.background : '';
   const inactiveBg = dots[1] ? dots[1].style.background : '';
+  const badge = container.querySelector('[data-carousel-badge]');
   let idx = 0;
   let timer;
 
@@ -142,6 +143,7 @@ document.querySelectorAll('div').forEach(container => {
     idx = next;
     fadeImgs[idx].style.opacity = '1';
     if (dots[idx]) dots[idx].style.background = activeBg;
+    if (badge && fadeImgs[idx].dataset.label) badge.textContent = fadeImgs[idx].dataset.label;
   }
 
   function restartAutoplay() {
