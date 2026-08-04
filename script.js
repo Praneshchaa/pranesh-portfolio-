@@ -1,8 +1,36 @@
 // Pranesh Shrestha portfolio — interactive behavior
 // (converted from Claude Design's runtime into plain JS, no build step needed)
 
+let navScrollY = 0;
+
+function openNav() {
+  navScrollY = window.scrollY;
+  const shell = document.querySelector('[data-shell]');
+  shell.style.position = 'fixed';
+  shell.style.top = `-${navScrollY}px`;
+  shell.style.left = '0';
+  shell.style.right = '0';
+  document.body.classList.add('nav-open');
+}
+
+function closeNav() {
+  document.body.classList.remove('nav-open');
+  const shell = document.querySelector('[data-shell]');
+  shell.style.position = '';
+  shell.style.top = '';
+  shell.style.left = '';
+  shell.style.right = '';
+  window.scrollTo(0, navScrollY);
+}
+
+function toggleNav() {
+  if (document.body.classList.contains('nav-open')) closeNav();
+  else openNav();
+}
+
 function railClick(e) {
   const rail = e.currentTarget.dataset.rail;
+  if (document.body.classList.contains('nav-open')) closeNav();
   const target = document.querySelector(`[data-sec="${rail}"]`);
   if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -13,6 +41,21 @@ function setArticleHover(which) {
     el.style.opacity = on ? '1' : '0';
     el.style.visibility = on ? 'visible' : 'hidden';
   });
+}
+
+// devices without a real hover-capable pointer (touch) ignore the hover handler entirely,
+// since mobile browsers fire compatibility mouseenter/click events together on tap
+function hoverPreview(which) {
+  if (window.matchMedia('(hover: hover)').matches) setArticleHover(which);
+}
+
+// mobile has no hover, so tapping the card toggles the preview instead
+function toggleArticlePreview(e, which) {
+  if (window.matchMedia('(hover: hover)').matches) return;
+  e.stopPropagation();
+  const el = document.querySelector(`[data-preview="${which}"]`);
+  const isOpen = el.style.opacity === '1';
+  setArticleHover(isOpen ? null : which);
 }
 
 // ---- scroll spy: highlight the current section in the left rail ----

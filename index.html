@@ -6,8 +6,9 @@
 <title>Pranesh Shrestha — UI/UX Designer &amp; Video Editor</title>
 <meta name="description" content="Pranesh Shrestha — UI/UX designer, video editor, voiceover artist and visual storyteller based in Kathmandu, Nepal.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&amp;family=Archivo:wght@400;500;600;700;800;900&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><style>
-body{margin:0;background:#0e0f11}
-a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
+html{overflow-x:clip}
+body{margin:0;background:#0e0f11;overflow-x:clip}
+a{color:#8b6bf2;text-decoration:none}a:hover{color:#a595f7}
 @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @media (max-width:760px){
@@ -16,6 +17,8 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 [data-mobile-static]{position:static!important}
 [data-mobile-hero]{grid-template-columns:1fr!important;padding:36px 20px 30px!important;gap:24px!important}
 [data-mobile-hero-img]{max-width:280px;margin:0 auto}
+[data-mobile-herotext]{text-align:center!important}
+[data-mobile-herotext] > *{margin-left:auto!important;margin-right:auto!important}
 [data-mobile-bleed]{height:auto!important;min-height:420px!important}
 [data-mobile-bleed-text]{left:20px!important;bottom:26px!important;right:20px!important}
 [data-mobile-h1-xl]{font-size:38px!important}
@@ -24,6 +27,21 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 [data-mobile-stack]{grid-template-columns:1fr!important}
 [data-mobile-2col]{grid-template-columns:repeat(2,1fr)!important}
 [data-mobile-pad]{padding-left:18px!important;padding-right:18px!important}
+[data-mobile-secrow]{flex-wrap:wrap!important}
+[data-mobile-secleft]{width:100%!important}
+[data-mobile-secmeta]{text-align:left!important}
+h2{font-size:19px!important}
+[data-mobile-arrow]{display:inline-block!important}
+[data-desktop-label]{display:none!important}
+[data-mobile-label]{display:inline!important}
+[data-mobile-topbar]{display:flex!important}
+[data-mobile-contactbar]{display:flex!important}
+[data-mobile-sidebarcontact]{display:none!important}
+[data-mobile-sidebar]{display:none!important}
+body.nav-open{overflow:hidden}
+body.nav-open [data-mobile-sidebar]{display:block!important;position:fixed!important;inset:0!important;z-index:65!important;overflow:auto!important;background:var(--bg)!important;padding:78px 22px 40px!important;border:none!important}
+body.nav-open [data-nav-icon-open]{display:none!important}
+body.nav-open [data-nav-icon-close]{display:block!important}
 }
 .hov1:hover{opacity:.72}
 .hov2:hover{transform:scale(1.05);color:var(--ink)}
@@ -33,29 +51,50 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <body>
 
 
-<div id="dc-root" style="--bg:#121316;--panel:#181a1e;--ink:#f2f0eb;--dim:#a9adb5;--meta:#9297a1;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.09);--s1:#22252b;--s2:#1c1f24;--acc:#e0a244;--accInk:#2a1f0c;--accText:#e0a244;--font:Archivo,system-ui,sans-serif;--display:Archivo,system-ui,sans-serif;--mono:'Space Grotesk',monospace;background:var(--bg);font-family:var(--font);min-height:100vh">
+<div id="dc-root" style="--bg:#121316;--panel:#181a1e;--ink:#f2f0eb;--dim:#a9adb5;--meta:#9297a1;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.09);--s1:#22252b;--s2:#1c1f24;--acc:#8b6bf2;--accInk:#1f1730;--accText:#8b6bf2;--font:Archivo,system-ui,sans-serif;--display:Archivo,system-ui,sans-serif;--mono:'Space Grotesk',monospace;background:var(--bg);font-family:var(--font);min-height:100vh">
 
+<div data-mobile-topbar="" style="display:none;position:sticky;top:0;z-index:70;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--bg);border-bottom:1px solid var(--line2)">
+<span style="font:600 15px/1.4 var(--font);color:var(--ink);letter-spacing:-.01em">Pranesh Shrestha</span>
+<button onclick="toggleNav()" aria-label="Toggle navigation menu" style="width:36px;height:36px;border:1px solid var(--line2);border-radius:6px;background:transparent;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0">
+<span data-nav-icon-open="" style="display:block;font:400 17px/1 var(--font);color:var(--ink)">☰</span>
+<span data-nav-icon-close="" style="display:none;font:400 17px/1 var(--font);color:var(--ink)">✕</span>
+</button>
+</div>
+
+<div data-mobile-contactbar="" style="display:none;flex-direction:column;gap:4px;padding:14px 20px;border-bottom:1px solid var(--line2)">
+<a class="hov1" href="mailto:pra.sth182@gmail.com" style="font:400 12.5px/1.6 var(--mono);color:var(--meta)">pra.sth182@gmail.com</a>
+<span style="font:400 12.5px/1.6 var(--mono);color:var(--meta)">+977 9818885638</span>
+<div style="font:400 12px/1.5 var(--mono);color:var(--meta);margin-top:2px;display:flex;align-items:center;gap:6px"><span>KATHMANDU, NEPAL</span><span>🇳🇵</span></div>
+<a class="hov1" href="https://www.linkedin.com/in/pranesh-shrestha-a4734525a/?skipRedirect=true" target="_blank" rel="noopener" style="margin-top:8px;display:flex;align-items:center;gap:6px;color:var(--meta)">
+<svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zm-46.44-338.8C24.09 109.2 0 84.66 0 54.3a54.3 54.3 0 0 1 108.6 0c0 30.36-24.1 54.9-53.76 54.9zM447.9 448h-92.68V302.4c0-34.7-.7-79.3-48.29-79.3-48.29 0-55.7 37.7-55.7 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+<span style="font:400 12.5px/1.6 var(--mono)">LINKEDIN <span style="font-size:.85em;color:var(--accText)">↗</span></span>
+</a>
+</div>
 
 
 <div data-shell="" style="max-width:1900px;margin:0 auto;display:grid;grid-template-columns:190px 1fr">
 
 <div data-mobile-sidebar="" style="border-right:1px solid var(--line2);padding:30px 0 30px 26px">
 <div data-mobile-static="" style="position:sticky;top:20px;display:flex;flex-direction:column">
-<div style="font:600 15px/1.4 var(--font);color:var(--ink);letter-spacing:-.01em;white-space:nowrap">Pranesh Shrestha</div>
-<a class="hov1" href="mailto:pra.sth182@gmail.com" style="font:400 12.5px/1.6 var(--mono);color:var(--meta);margin-top:8px">pra.sth182@gmail.com</a>
-<span style="font:400 12.5px/1.6 var(--mono);color:var(--meta)">+977 9818885638</span>
-<div style="font:400 12px/1.5 var(--mono);color:var(--meta);margin-top:7px;display:flex;align-items:center;gap:6px"><span>KATHMANDU, NEPAL</span><span>🇳🇵</span></div>
+<div data-mobile-sidebarcontact="" style="font:600 15px/1.4 var(--font);color:var(--ink);letter-spacing:-.01em;white-space:nowrap">Pranesh Shrestha</div>
+<a data-mobile-sidebarcontact="" class="hov1" href="mailto:pra.sth182@gmail.com" style="font:400 12.5px/1.6 var(--mono);color:var(--meta);margin-top:8px">pra.sth182@gmail.com</a>
+<span data-mobile-sidebarcontact="" style="font:400 12.5px/1.6 var(--mono);color:var(--meta)">+977 9818885638</span>
+<div data-mobile-sidebarcontact="" style="font:400 12px/1.5 var(--mono);color:var(--meta);margin-top:7px;display:flex;align-items:center;gap:6px"><span>KATHMANDU, NEPAL</span><span>🇳🇵</span></div>
+<a data-mobile-sidebarcontact="" class="hov1" href="https://www.linkedin.com/in/pranesh-shrestha-a4734525a/?skipRedirect=true" target="_blank" rel="noopener" style="margin-top:8px;display:flex;align-items:center;gap:6px;color:var(--meta)">
+<svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zm-46.44-338.8C24.09 109.2 0 84.66 0 54.3a54.3 54.3 0 0 1 108.6 0c0 30.36-24.1 54.9-53.76 54.9zM447.9 448h-92.68V302.4c0-34.7-.7-79.3-48.29-79.3-48.29 0-55.7 37.7-55.7 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+<span style="font:400 12.5px/1.6 var(--mono)">LINKEDIN <span style="font-size:.85em;color:var(--accText)">↗</span></span>
+</a>
 <div style="display:flex;flex-direction:column;gap:1px;margin-top:22px">
 <div style="border-bottom:1px solid var(--line2);margin-bottom:6px">
-<div data-rail="01" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:56px 1fr;gap:8px;align-items:end;padding:7px 0 12px;cursor:pointer;font:400 16px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 12px/1.5 var(--mono);color:var(--meta)">2019–26</span>Journey</div>
+<div data-rail="01" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:56px 1fr;gap:8px;align-items:end;padding:7px 0 12px;cursor:pointer;font:400 16px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 12px/1.5 var(--mono);color:var(--meta)">2019–26</span><span>Journey<span data-mobile-arrow="" style="display:none;font-size:.6em;margin-left:6px;color:var(--accText)">→</span></span></div>
 </div>
 <div style="display:flex;flex-direction:column;gap:1px">
-<div data-rail="02" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap">2021–22</span>Fusemachines</div>
-<div data-rail="03" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap">2022–26</span>Togglecorp</div>
-<div data-rail="04" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap">2022–now</span>TATAMAMA</div>
-<div data-rail="05" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap"></span>Freelance</div>
-<div data-rail="06" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap">2025–26</span>Ghumante</div>
-<div data-rail="07" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap">2025–26</span><span>Debugging<br>Dream</span></div>
+<div data-rail="02" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap">2021–22</span><span>Fusemachines<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
+<div data-rail="03" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap">2022–26</span><span>Togglecorp<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
+<div data-rail="04" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap">2022–now</span><span>TATAMAMA<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
+<div data-rail="05" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap"></span><span>Freelance<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
+<div data-rail="06" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap">2025–26</span><span>Ghumante<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
+<div data-rail="07" onclick="railClick(event)" class="hov2" style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;cursor:pointer;font:400 13px/1.3 var(--font);color:var(--meta);transform-origin:left center;transition:transform .18s,color .18s"><span style="font:400 11px/1.5 var(--mono);color:var(--meta);white-space:nowrap">2025–26</span><span>Debugging<br>Dream<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
 </div>
 </div>
 <div style="margin-top:26px;padding-top:20px;border-top:1px solid var(--line2)">
@@ -74,7 +113,7 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 
 
 <div data-mobile-hero="" style="display:grid;grid-template-columns:1fr 460px;gap:50px;padding:56px 34px 46px;align-items:center;animation:rise .8s both;max-width:1400px">
-<div>
+<div data-mobile-herotext="">
 <div style="font:700 13px/1.7 var(--mono);color:var(--accText);letter-spacing:.1em;margin-bottom:26px;max-width:34ch">UI/UX DESIGNER · VIDEO EDITOR<br><span style="color:#fff;white-space:nowrap">VOICEOVER ARTIST · VISUAL STORYTELLER</span></div>
 <h1 data-mobile-h1-lg="" style="margin:0 0 32px;font:500 61.5px/1.08 var(--display);letter-spacing:-.032em;color:var(--ink);text-wrap:balance">I design the interface.<br>I shoot what plays on it.</h1>
 <p style="margin:0;max-width:46ch;font:400 17.5px/1.66 var(--font);color:var(--dim);text-wrap:pretty">UI/UX, product design, videography, video editing, script writing, content writing, voiceover, branding, creative ads and marketing, all shipped and linked below.</p>
@@ -107,9 +146,9 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <div data-mobile-pad="" style="padding:0 34px">
 <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:40px 0 18px">
 <span data-sec="01" style="font:400 13px/1 var(--mono);color:var(--accText)">01</span>
-<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
-<h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Journey: two careers, run in parallel</h2>
-<span style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">2019 to 2026</span>
+<div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<h2 data-mobile-secleft="" style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Journey: two careers, run in parallel</h2>
+<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">2019 to 2026</span>
 </div>
 </div>
 </div>
@@ -135,12 +174,12 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <div data-mobile-pad="" style="padding:0 34px">
 <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:44px 0 18px;margin-top:20px;border-top:1px solid var(--line)">
 <span data-sec="02" style="font:400 13px/1 var(--mono);color:var(--accText)">02</span>
-<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
-<div style="display:flex;align-items:center;gap:10px">
+<div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<div data-mobile-secleft="" style="display:flex;align-items:center;gap:10px">
 <div style="background:#fff;border-radius:3px;padding:4px 7px;display:flex;align-items:center"><img src="uploads/fusemachines-logo.png" alt="Fusemachines logo" style="height:16px;width:auto;display:block"></div>
 <h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Fusemachines: before design</h2>
 </div>
-<span style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">SOFTWARE ENGINEER · 2021–2022</span>
+<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">SOFTWARE ENGINEER · 2021–2022</span>
 </div>
 </div>
 </div>
@@ -163,12 +202,12 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <div data-mobile-pad="" style="padding:0 34px">
 <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:44px 0 18px;margin-top:20px;border-top:1px solid var(--line)">
 <span data-sec="03" style="font:400 13px/1 var(--mono);color:var(--accText)">03</span>
-<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
-<div style="display:flex;align-items:center;gap:10px">
+<div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<div data-mobile-secleft="" style="display:flex;align-items:center;gap:10px">
 <div style="background:#fff;border-radius:3px;padding:4px 7px;display:flex;align-items:center"><img src="uploads/togglecorp-logo.png" alt="Togglecorp logo" style="height:16px;width:auto;display:block"></div>
 <h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Togglecorp: UI/UX and product design</h2>
 </div>
-<span style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">2022–2026</span>
+<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">2022–2026</span>
 </div>
 </div>
 </div>
@@ -325,9 +364,9 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <div data-mobile-pad="" style="padding:0 34px">
 <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:44px 0 18px;margin-top:20px;border-top:1px solid var(--line)">
 <span data-sec="04" style="font:400 13px/1 var(--mono);color:var(--accText)">04</span>
-<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
-<h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Shirish and Pranesh: the YouTube channel</h2>
-<span style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">COFOUNDER · SCRIPT TO GRADE · 2022–NOW<br>1.6K SUBS · MONETIZED</span>
+<div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<h2 data-mobile-secleft="" style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Shirish and Pranesh: the YouTube channel</h2>
+<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">COFOUNDER · SCRIPT TO GRADE · 2022–NOW<br>1.6K SUBS · MONETIZED</span>
 </div>
 </div>
 </div>
@@ -413,9 +452,9 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <div data-mobile-pad="" style="padding:0 34px">
 <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:44px 0 18px;margin-top:20px;border-top:1px solid var(--line)">
 <span data-sec="05" style="font:400 13px/1 var(--mono);color:var(--accText)">05</span>
-<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
-<h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Freelance &amp; independent</h2>
-<span style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">CREATIVE CLIENT WORKS</span>
+<div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<h2 data-mobile-secleft="" style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Freelance &amp; independent</h2>
+<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">CREATIVE CLIENT WORKS</span>
 </div>
 </div>
 </div>
@@ -466,30 +505,30 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <div style="font:600 12px/1 var(--mono);color:var(--acc);letter-spacing:.1em">ARTICLES PUBLISHED ON THE HIMALAYAN TIMES</div>
 </div>
 <div data-mobile-stack="" style="padding:12px 34px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px">
-<div onmouseenter="setArticleHover('tsho')" onmouseleave="setArticleHover(null)" style="position:relative;border:1px solid var(--line);border-radius:4px;padding:18px 20px;background:var(--panel);cursor:pointer">
+<div onmouseenter="hoverPreview('tsho')" onmouseleave="hoverPreview(null)" onclick="toggleArticlePreview(event,'tsho')" style="position:relative;border:1px solid var(--line);border-radius:4px;padding:18px 20px;background:var(--panel);cursor:pointer">
 <div style="background:#fff;border-radius:3px;padding:5px 8px;display:inline-flex;align-items:center;margin-bottom:10px"><img src="uploads/logo.jpg" alt="The Himalayan Times logo" style="height:14px;width:auto;display:block"></div>
 <div style="font:500 21px/1.25 var(--display);color:var(--ink);margin-bottom:7px">Tsho Rolpa</div>
 <div style="font:400 15px/1.55 var(--font);color:var(--dim);margin-bottom:10px">A glacial lake that could drown a valley, and the people who live below it. Written and published as a content writer for <span style="color:var(--ink);font-weight:600">The Himalayan Times</span> newspaper.</div>
 <div style="position:absolute;left:0;right:0;bottom:calc(100% + 8px);transition:opacity .15s;z-index:20;box-shadow:0 12px 32px rgba(0,0,0,.5);border-radius:6px;overflow:hidden;pointer-events:none;opacity:0;visibility:hidden" data-preview="tsho">
 <img src="uploads/tsho-rolpa-article.png" alt="Tsho Rolpa article scan, The Himalayan Times" style="width:100%;display:block">
 </div>
-<div style="font:600 12px/1 var(--mono);color:#5ee6e0;letter-spacing:.1em;position:absolute;top:16px;right:18px">HOVER TO PREVIEW ↑</div>
+<div style="font:600 12px/1 var(--mono);color:#5ee6e0;letter-spacing:.1em;position:absolute;top:16px;right:18px"><span data-desktop-label="">HOVER TO PREVIEW ↑</span><span data-mobile-label="" style="display:none">TAP TO PREVIEW ↑</span></div>
 </div>
-<div onmouseenter="setArticleHover('kyanjin')" onmouseleave="setArticleHover(null)" style="position:relative;border:1px solid var(--line);border-radius:4px;padding:18px 20px;background:var(--panel);cursor:pointer">
+<div onmouseenter="hoverPreview('kyanjin')" onmouseleave="hoverPreview(null)" onclick="toggleArticlePreview(event,'kyanjin')" style="position:relative;border:1px solid var(--line);border-radius:4px;padding:18px 20px;background:var(--panel);cursor:pointer">
 <div style="background:#fff;border-radius:3px;padding:5px 8px;display:inline-flex;align-items:center;margin-bottom:10px"><img src="uploads/logo.jpg" alt="The Himalayan Times logo" style="height:14px;width:auto;display:block"></div>
 <div style="font:500 21px/1.25 var(--display);color:var(--ink);margin-bottom:7px">Langtang, Kyanjin Ri</div>
 <div style="font:400 15px/1.55 var(--font);color:var(--dim);margin-bottom:10px">Walking a valley that rebuilt itself after the earthquake took it. Written and published as a content writer for <span style="color:var(--ink);font-weight:600">The Himalayan Times</span> newspaper.</div>
 <div style="position:absolute;left:0;right:0;bottom:calc(100% + 8px);transition:opacity .15s;z-index:20;box-shadow:0 12px 32px rgba(0,0,0,.5);border-radius:6px;overflow:hidden;pointer-events:none;opacity:0;visibility:hidden" data-preview="kyanjin">
 <img src="uploads/kyanjin-ri-article.png" alt="Kyanjin Ri article scan, The Himalayan Times" style="width:100%;display:block">
 </div>
-<div style="font:600 12px/1 var(--mono);color:#5ee6e0;letter-spacing:.1em;position:absolute;top:16px;right:18px">HOVER TO PREVIEW ↑</div>
+<div style="font:600 12px/1 var(--mono);color:#5ee6e0;letter-spacing:.1em;position:absolute;top:16px;right:18px"><span data-desktop-label="">HOVER TO PREVIEW ↑</span><span data-mobile-label="" style="display:none">TAP TO PREVIEW ↑</span></div>
 </div>
 </div>
 
 <div data-mobile-stack="" style="padding:12px 34px 0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
 <a class="hov1" href="https://www.behance.net/gallery/219737309/Jheer-Commercial" target="_blank" style="text-decoration:none;color:inherit;display:block;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel)">
 <div style="position:relative;aspect-ratio:16/9"><img src="uploads/jheer-sekuwa.jpg" alt="Jheer Sekuwa illuminated sign" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
-<div style="position:absolute;top:12px;left:13px;padding:4px 8px;background:rgba(11,13,18,.8);font:400 12px/1 var(--mono);color:#e0a244;letter-spacing:.1em;pointer-events:none">COMMERCIAL · 2024</div>
+<div style="position:absolute;top:12px;left:13px;padding:4px 8px;background:rgba(11,13,18,.8);font:400 12px/1 var(--mono);color:#8b6bf2;letter-spacing:.1em;pointer-events:none">COMMERCIAL · 2024</div>
 </div>
 <div style="padding:16px 18px 18px">
 <div style="font:500 20px/1.2 var(--display);color:var(--ink);margin-bottom:6px">Jheer Sekuwa <span style="font-size:.6em;color:var(--accText)">↗</span></div>
@@ -550,7 +589,7 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <span style="width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.25);transition:background .3s"></span>
 
 </div>
-<div style="position:absolute;top:10px;left:11px;padding:4px 8px;background:rgba(11,13,18,.8);font:400 10.5px/1 var(--mono);color:#e0a244;letter-spacing:.08em;pointer-events:none">WEBSITE DEVELOPMENT ONGOING</div>
+<div style="position:absolute;top:10px;left:11px;padding:4px 8px;background:rgba(11,13,18,.8);font:400 10.5px/1 var(--mono);color:#8b6bf2;letter-spacing:.08em;pointer-events:none">WEBSITE DEVELOPMENT ONGOING</div>
 </div>
 <div style="padding:11px 13px">
 <div style="font:400 10.5px/1 var(--mono);color:var(--accText);letter-spacing:.1em;margin-bottom:6px">MY ROLE: UI/UX DESIGN</div>
@@ -589,12 +628,12 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <div data-mobile-pad="" style="padding:0 34px">
 <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:44px 0 18px;margin-top:20px;border-top:1px solid var(--line)">
 <span data-sec="06" style="font:400 13px/1 var(--mono);color:var(--accText)">06</span>
-<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
-<div style="display:flex;align-items:center;gap:10px">
+<div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<div data-mobile-secleft="" style="display:flex;align-items:center;gap:10px">
 <img src="uploads/ghumante-logo.jpeg" alt="Ghumante logo" style="height:24px;width:24px;border-radius:5px;display:block;object-fit:cover">
 <h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Ghumante: drone, videography &amp; photography</h2>
 </div>
-<span style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">2025–2026</span>
+<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">2025–2026</span>
 </div>
 </div>
 </div>
@@ -646,12 +685,12 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <div data-mobile-pad="" style="padding:0 34px">
 <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:44px 0 18px;margin-top:20px;border-top:1px solid var(--line)">
 <span data-sec="07" style="font:400 13px/1 var(--mono);color:var(--accText)">07</span>
-<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
-<div style="display:flex;align-items:center;gap:10px">
+<div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<div data-mobile-secleft="" style="display:flex;align-items:center;gap:10px">
 <div style="background:#fff;border-radius:3px;padding:4px 7px;display:flex;align-items:center"><img src="uploads/debugdream-logo.png" alt="Debugging Dream logo" style="height:16px;width:auto;display:block"></div>
 <h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Debugging Dream: digital marketing and video production</h2>
 </div>
-<span style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">2025-2026</span>
+<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">2025-2026</span>
 </div>
 </div>
 </div>
@@ -663,7 +702,7 @@ a{color:#e0a244;text-decoration:none}a:hover{color:#eeb35a}
 <img src="uploads/dd-final.jpg" alt="Final composited studio shot after editing" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .6s">
 <img src="uploads/dd-greenscreen-2.jpg" alt="Raw greenscreen footage before editing, second setup" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .6s">
 <img src="uploads/dd-final-2.jpg" alt="Final composited studio shot after editing, second setup" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .6s">
-<div style="position:absolute;top:12px;left:13px;padding:4px 8px;background:rgba(11,13,18,.8);font:400 12px/1 var(--mono);color:#e0a244;letter-spacing:.1em;pointer-events:none">GREENSCREEN · RAW</div>
+<div style="position:absolute;top:12px;left:13px;padding:4px 8px;background:rgba(11,13,18,.8);font:400 12px/1 var(--mono);color:#8b6bf2;letter-spacing:.1em;pointer-events:none">GREENSCREEN · RAW</div>
 </div>
 <div style="border:1px solid var(--line);border-radius:4px;padding:16px 18px 18px;background:var(--panel)">
 <div style="font:500 20px/1.2 var(--display);color:var(--ink);margin-bottom:6px">Debugging Dream</div>
