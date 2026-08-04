@@ -63,7 +63,8 @@ function spy() {
   const secs = Array.from(document.querySelectorAll('[data-sec]'));
   if (!secs.length) return;
   let cur = secs[0].dataset.sec;
-  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+  const isDesktop = window.matchMedia('(min-width: 761px)').matches;
+  const atBottom = isDesktop && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
   if (atBottom) {
     cur = secs[secs.length - 1].dataset.sec;
   } else {
