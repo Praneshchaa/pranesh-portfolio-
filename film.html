@@ -55,6 +55,30 @@ body.nav-open [data-nav-icon-close]{display:block!important}
 .hov3:hover{opacity:.88}
 }
 body.scrolled [data-name-link]{cursor:pointer!important}
+[data-hero-switch]{transition:transform .22s cubic-bezier(.34,1.4,.5,1),background .22s ease,border-color .22s ease}
+@media (hover:hover){
+[data-hero-switch]:hover{transform:scale(1.055) translateY(-2px);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.62)!important}
+}
+[data-hero-switch]:active{transform:scale(.98)}
+@keyframes noteIn{from{opacity:0;visibility:visible;transform:translateY(22px) scale(.97)}to{opacity:1;visibility:visible;transform:none}}
+[data-note]{box-sizing:border-box;position:fixed;right:22px;bottom:22px;width:340px;max-width:calc(100vw - 32px);z-index:90;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;box-shadow:0 18px 50px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(22px);animation:noteIn .6s cubic-bezier(.16,.8,.3,1) 1.6s forwards}
+[data-note].note-off{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .3s ease}
+[data-note].note-on{opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important;transition:opacity .3s ease}
+[data-note-launch]{position:fixed;right:22px;bottom:22px;z-index:89;width:46px;height:46px;padding:0;border:none;border-radius:50%;background:linear-gradient(135deg,#f0568f,#8b6bf2);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:scale(.7);transition:opacity .3s ease,transform .3s cubic-bezier(.16,.8,.3,1),visibility 0s linear .3s}
+body.note-dismissed [data-note-launch]{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+[data-note-launch]:hover{transform:scale(1.09)}
+@media (max-width:760px){[data-note-launch]{right:18px;bottom:78px}}
+[data-note-head]{display:flex;align-items:flex-start;gap:11px}
+[data-note-icon]{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0568f,#8b6bf2);color:#fff}
+[data-note-title]{font:600 14px/1.3 var(--font);color:var(--ink);margin-bottom:5px}
+[data-note-body]{font:400 13px/1.55 var(--font);color:var(--dim)}
+[data-note-cta]{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:14px;padding:10px 14px;border-radius:9px;background:var(--acc);color:var(--accInk)!important;font:600 12px/1 var(--mono);letter-spacing:.06em;transition:transform .18s ease,filter .18s ease}
+[data-note-cta]:hover{transform:translateY(-1px);filter:brightness(1.08)}
+[data-note-x]{position:absolute;top:9px;right:9px;width:26px;height:26px;padding:0;border:none;border-radius:50%;background:transparent;color:var(--meta);font:400 15px/1 var(--font);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .18s ease,background .18s ease}
+[data-note-x]:hover{color:var(--ink);background:var(--s1)}
+body.note-open [data-scrolltop-btn]{opacity:0!important;pointer-events:none!important}
+@media (max-width:760px){[data-note]{left:16px;right:16px;bottom:16px;width:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){[data-note]{animation-duration:.01s;transform:none}}
 .sb-row{display:flex;align-items:center;gap:8px;margin-top:6px;padding:11px;border:1px solid transparent;border-radius:9px;font:400 12.5px/1.45 var(--mono);color:var(--meta);box-sizing:border-box}
 .sb-rail{display:grid;grid-template-columns:60px 1fr;gap:9px;align-items:center;margin-top:6px;padding:11px;border:1px solid var(--line2);border-radius:9px;background:rgba(255,255,255,.035);box-sizing:border-box;cursor:pointer;font:400 13px/1.35 var(--font);color:var(--meta);transition:background .18s ease,border-color .18s ease}
 .sb-rail:hover{background:rgba(139,107,242,.16);border-color:rgba(139,107,242,.45)}
@@ -126,10 +150,10 @@ body.sidebar-collapsed [data-sidebar-toggle] [data-sb-close]{display:none}
 <div class="sb-group sb-group-first" style="display:flex;flex-direction:column">
 <div class="sb-head">JOURNEY</div>
 <div style="display:flex;flex-direction:column">
-<div data-rail-target="01" data-rail="02" onclick="railClick(event)" class="sb-rail" style="transition:background .18s ease,border-color .18s ease,color .18s"><span style="font:400 11px/1.4 var(--mono);color:var(--meta);white-space:nowrap">2022–26</span><span>Togglecorp<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
+<div data-rail-target="01" data-rail="02" onclick="railClick(event)" class="sb-rail" style="transition:background .18s ease,border-color .18s ease,color .18s"><span style="font:400 11px/1.4 var(--mono);color:var(--meta);white-space:nowrap">2025–26</span><span>Ghumante<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
 <div data-rail="03" onclick="railClick(event)" class="sb-rail" style="transition:background .18s ease,border-color .18s ease,color .18s"><span style="font:400 11px/1.4 var(--mono);color:var(--meta);white-space:nowrap">2022–now</span><span>Shirish &amp; Pranesh<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
-<div data-rail="04" onclick="railClick(event)" class="sb-rail sb-rail-solo" style="transition:background .18s ease,border-color .18s ease,color .18s"><span>Freelance<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
-<div data-rail="05" onclick="railClick(event)" class="sb-rail" style="transition:background .18s ease,border-color .18s ease,color .18s"><span style="font:400 11px/1.4 var(--mono);color:var(--meta);white-space:nowrap">2025–26</span><span>Ghumante<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
+<div data-rail="04" onclick="railClick(event)" class="sb-rail" style="transition:background .18s ease,border-color .18s ease,color .18s"><span style="font:400 11px/1.4 var(--mono);color:var(--meta);white-space:nowrap">2022–26</span><span>Togglecorp<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
+<div data-rail="05" onclick="railClick(event)" class="sb-rail sb-rail-solo" style="transition:background .18s ease,border-color .18s ease,color .18s"><span>Freelance<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
 <div data-rail="06" onclick="railClick(event)" class="sb-rail" style="transition:background .18s ease,border-color .18s ease,color .18s"><span style="font:400 11px/1.4 var(--mono);color:var(--meta);white-space:nowrap">2025–26</span><span>Debugging Dream<span data-mobile-arrow="" style="display:none;font-size:.75em;margin-left:6px;color:var(--accText)">→</span></span></div>
 </div>
 </div>
@@ -147,7 +171,7 @@ body.sidebar-collapsed [data-sidebar-toggle] [data-sb-close]{display:none}
 <div data-mobile-content="" style="min-width:0">
 <div data-mobile-hero="" style="display:flex;flex-wrap:wrap;gap:50px;padding:56px 34px 46px;align-items:center;animation:rise .8s both;max-width:1400px">
 <div data-mobile-herotext="" style="flex:1 1 340px;min-width:0">
-<a href="design.html" class="hov1" style="display:inline-flex;margin-bottom:28px;align-items:center;gap:7px;padding:9px 16px;border:1px solid var(--acc);border-radius:20px;font:600 12px/1 var(--mono);color:var(--accText);letter-spacing:.06em"><span data-desktop-label="">SWITCH TO UI/UX &amp; PRODUCT DESIGN</span><span data-mobile-label="" style="display:none">SWITCH TO UI/UX DESIGN</span> <span>→</span></a>
+<a data-hero-switch="" href="design.html" style="display:inline-flex;margin-bottom:28px;align-items:center;gap:7px;padding:9px 16px;border:1px solid rgba(255,255,255,.28);border-radius:20px;font:600 12px/1 var(--mono);color:var(--accText);letter-spacing:.06em"><span data-desktop-label="">SWITCH TO UI/UX &amp; PRODUCT DESIGN</span><span data-mobile-label="" style="display:none">SWITCH TO UI/UX DESIGN</span> <span>→</span></a>
 <div data-mobile-hidetagline="" style="font:700 13px/1.7 var(--mono);color:var(--accText);letter-spacing:.1em;margin-bottom:26px;max-width:34ch"><span style="white-space:nowrap">VIDEOGRAPHER · EDITOR · DESIGNER</span><br><span style="color:#fff;white-space:nowrap">VOICEOVER ARTIST · MARKETER</span></div>
 <h4 data-mobile-h1-lg="" style="margin:0 0 22px;font:500 40px/1.2 var(--display);letter-spacing:-.02em;color:var(--ink);text-wrap:balance">From My Lens &amp; Premiere Pro to Screens.</h4>
 </div>
@@ -181,55 +205,55 @@ body.sidebar-collapsed [data-sidebar-toggle] [data-sb-close]{display:none}
 <span data-sec="02" style="font:400 13px/1 var(--mono);color:var(--accText)">02</span>
 <div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
 <div data-mobile-secleft="" style="display:flex;align-items:center;gap:10px">
-<div style="background:#fff;border-radius:3px;padding:4px 7px;display:flex;align-items:center"><img src="uploads/togglecorp-logo.png" alt="Togglecorp logo" style="height:16px;width:auto;display:block"></div>
-<h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Togglecorp: brand &amp; creative design</h2>
+<img src="uploads/ghumante-logo.jpeg" alt="Ghumante logo" style="height:24px;width:24px;border-radius:5px;display:block;object-fit:cover">
+<h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Ghumante: drone, videography &amp; photography</h2>
 </div>
-<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">GRAPHIC DESIGN &amp; CREATIVE · 2022–2026</span>
-</div>
-</div>
-</div>
-<div data-mobile-stack="" style="padding:4px 34px 0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
-<div style="border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel)">
-<div style="aspect-ratio:16/9;overflow:hidden;background:#2a1c14"><img src="uploads/togglecorp-social-card.png" alt="Togglecorp logo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-<div style="padding:15px 17px">
-<div style="font:500 17.5px/1.2 var(--display);color:var(--ink);margin-bottom:5px">Togglecorp social</div>
-<div style="font:400 11px/1 var(--mono);color:var(--accText);letter-spacing:.08em;margin-bottom:7px">MY ROLE: CREATIVE DESIGNER</div>
-<div style="font:400 14px/1.55 var(--font);color:var(--dim)">I designed the company website, brand guide, graphics, video edits and post templates.</div>
+<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">2025–2026</span>
 </div>
 </div>
-<a class="hov1" href="https://www.behance.net/gallery/205191145/Case-study-for-humanitarian-organization-logo-design" target="_blank" style="text-decoration:none;color:inherit;display:block;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel)">
-<div style="position:relative;aspect-ratio:16/9;background:#2a2725">
-<img src="uploads/orange-initiative-brandbook.webp" alt="The Orange Initiative brand book overview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:1;transition:opacity .5s">
-<img src="uploads/orange-initiative-2.jpg" alt="The Orange Initiative logo lockup" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s">
-<div style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px">
+</div>
 
-<span style="width:7px;height:7px;border-radius:50%;background:var(--acc);transition:background .3s"></span>
-
-<span style="width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.25);transition:background .3s"></span>
-
+<div data-mobile-stack="" style="padding:0 34px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden"><img src="uploads/ghumante-1.webp" alt="Ghumante crew in the Langtang valley at sunrise" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="position:relative;aspect-ratio:16/10;border-radius:4px;overflow:hidden"><img src="uploads/ghumante-2.webp" alt="Ghumante crew outside a mountain lodge" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+<div style="border:1px solid var(--line);border-radius:4px;padding:16px 18px 18px;background:var(--panel);flex:1">
+<div style="font:500 20px/1.2 var(--display);color:var(--ink);margin-bottom:6px">Ghumante</div>
+<div style="font:400 12px/1 var(--mono);color:var(--accText);letter-spacing:.1em;margin-bottom:8px">MY ROLE: DRONE OPERATOR, VIDEOGRAPHER &amp; EDITOR</div>
+<div style="font:400 15px/1.55 var(--font);color:var(--dim)">I traversed the eastern Himalayas along the border of India and Nepal to document the lack of roads to Sandakpur from the Nepal side, and documented an IFMGA Mountain Guide training course with Sherpas in winter at Tsho Rolpa.</div>
+<div style="font:400 15px/1.55 var(--font);color:var(--dim);margin-top:10px">I operated the drone across varied terrain and weather in the Himalayas, then cut the footage in DaVinci Resolve, handling my own sound design and music selection.</div>
 </div>
 </div>
-<div style="padding:15px 17px">
-<div style="font:500 17.5px/1.2 var(--display);color:var(--ink);margin-bottom:5px">The Orange Initiative <span style="font-size:.65em;color:var(--accText)">↗</span></div>
-<div style="font:400 11px/1 var(--mono);color:var(--accText);letter-spacing:.08em;margin-bottom:7px">MY ROLE: LOGO &amp; BRAND DESIGN</div>
-<div style="font:400 14px/1.55 var(--font);color:var(--dim)">I designed the logo and brand book for this humanitarian organisation, along with their visiting card and graphics.</div>
+</div>
+
+<div style="padding:12px 34px 0">
+<div style="font:600 12px/1 var(--mono);color:var(--acc);letter-spacing:.1em;margin-bottom:10px">VIDEOS I EDITED, LINKED BELOW</div>
+<div data-mobile-2col="" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+<a class="hov1" href="https://www.youtube.com/watch?v=f5plXwVnXuk" target="_blank" style="position:relative;display:block;border-radius:4px;overflow:hidden;aspect-ratio:16/9">
+<img src="uploads/ghumante-vid1-maipokhari.jpg" alt="Ilam Sandakpur series Episode I, Maipokhari" style="width:100%;height:100%;object-fit:cover;display:block">
+<div style="position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center">
+<div style="width:36px;height:36px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.4)"><span style="border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--accInk);margin-left:2px"></span></div>
 </div>
 </a>
-<a class="hov1" href="https://www.behance.net/gallery/214883453/Credible-Tools-Logo" target="_blank" style="text-decoration:none;color:inherit;display:block;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel)">
-<div style="aspect-ratio:16/9;overflow:hidden;background:#fff"><img src="uploads/credible-tools-logo.png" alt="Credible Tools logo" style="width:100%;height:100%;object-fit:contain;display:block"></div>
-<div style="padding:15px 17px">
-<div style="font:500 17.5px/1.2 var(--display);color:var(--ink);margin-bottom:5px">Credible Tools <span style="font-size:.65em;color:var(--accText)">↗</span></div>
-<div style="font:400 11px/1 var(--mono);color:var(--accText);letter-spacing:.08em;margin-bottom:7px">MY ROLE: LOGO DESIGN</div>
-<div style="font:400 14px/1.55 var(--font);color:var(--dim)">I created multiple versions of the logo along with its meaning and iterations, finally landing on one logo for the IT company.</div>
+<a class="hov1" href="https://www.youtube.com/watch?v=7K-3D1sDuCQ" target="_blank" style="position:relative;display:block;border-radius:4px;overflow:hidden;aspect-ratio:16/9">
+<img src="uploads/ghumante-vid2-todke.jpg" alt="Ilam Sandakpur series Episode II, Todke Jharana, Diamond Dhunga and Somelakmalung" style="width:100%;height:100%;object-fit:cover;display:block">
+<div style="position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center">
+<div style="width:36px;height:36px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.4)"><span style="border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--accInk);margin-left:2px"></span></div>
 </div>
 </a>
-<div style="border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel)">
-<div style="aspect-ratio:16/9;overflow:hidden;background:#fff"><img src="uploads/usaid.webp" alt="USAID Nepal logo" style="width:100%;height:100%;object-fit:contain;display:block"></div>
-<div style="padding:15px 17px">
-<div style="font:500 17.5px/1.2 var(--display);color:var(--ink);margin-bottom:5px">USAID Nepal</div>
-<div style="font:400 11px/1 var(--mono);color:var(--accText);letter-spacing:.08em;margin-bottom:7px">MY ROLE: GRAPHIC DESIGN</div>
-<div style="font:400 14px/1.55 var(--font);color:var(--dim)">Onsite meetings with the directors to plan and gather requirements. Designed awareness program brochures and graphics for events.</div>
+<a class="hov1" href="https://www.youtube.com/watch?v=FT6gU-goEtw" target="_blank" style="position:relative;display:block;border-radius:4px;overflow:hidden;aspect-ratio:16/9">
+<img src="uploads/ghumante-vid3-sandakpur1.jpg" alt="Sandakpur Phalelung Trek Episode I" style="width:100%;height:100%;object-fit:cover;display:block">
+<div style="position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center">
+<div style="width:36px;height:36px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.4)"><span style="border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--accInk);margin-left:2px"></span></div>
 </div>
+</a>
+<a class="hov1" href="https://www.youtube.com/watch?v=8oFY0mWbxPE" target="_blank" style="position:relative;display:block;border-radius:4px;overflow:hidden;aspect-ratio:16/9">
+<img src="uploads/ghumante-vid4-sandakpur2.jpg" alt="Sandakpur Phalelung Trek Episode II" style="width:100%;height:100%;object-fit:cover;display:block">
+<div style="position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center">
+<div style="width:36px;height:36px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.4)"><span style="border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--accInk);margin-left:2px"></span></div>
+</div>
+</a>
 </div>
 </div>
 <div data-mobile-pad="" style="padding:0 34px">
@@ -322,6 +346,62 @@ body.sidebar-collapsed [data-sidebar-toggle] [data-sb-close]{display:none}
 <div data-mobile-pad="" style="padding:0 34px">
 <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:44px 0 18px;margin-top:20px;border-top:1px solid var(--line)">
 <span data-sec="04" style="font:400 13px/1 var(--mono);color:var(--accText)">04</span>
+<div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<div data-mobile-secleft="" style="display:flex;align-items:center;gap:10px">
+<div style="background:#fff;border-radius:3px;padding:4px 7px;display:flex;align-items:center"><img src="uploads/togglecorp-logo.png" alt="Togglecorp logo" style="height:16px;width:auto;display:block"></div>
+<h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Togglecorp: brand &amp; creative design</h2>
+</div>
+<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">GRAPHIC DESIGN &amp; CREATIVE · 2022–2026</span>
+</div>
+</div>
+</div>
+<div data-mobile-stack="" style="padding:4px 34px 0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+<div style="border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel)">
+<div style="aspect-ratio:16/9;overflow:hidden;background:#2a1c14"><img src="uploads/togglecorp-social-card.png" alt="Togglecorp logo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div style="padding:15px 17px">
+<div style="font:500 17.5px/1.2 var(--display);color:var(--ink);margin-bottom:5px">Togglecorp social</div>
+<div style="font:400 11px/1 var(--mono);color:var(--accText);letter-spacing:.08em;margin-bottom:7px">MY ROLE: CREATIVE DESIGNER</div>
+<div style="font:400 14px/1.55 var(--font);color:var(--dim)">I designed the company website, brand guide, graphics, video edits and post templates.</div>
+</div>
+</div>
+<a class="hov1" href="https://www.behance.net/gallery/205191145/Case-study-for-humanitarian-organization-logo-design" target="_blank" style="text-decoration:none;color:inherit;display:block;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel)">
+<div style="position:relative;aspect-ratio:16/9;background:#2a2725">
+<img src="uploads/orange-initiative-brandbook.webp" alt="The Orange Initiative brand book overview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:1;transition:opacity .5s">
+<img src="uploads/orange-initiative-2.jpg" alt="The Orange Initiative logo lockup" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s">
+<div style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px">
+
+<span style="width:7px;height:7px;border-radius:50%;background:var(--acc);transition:background .3s"></span>
+
+<span style="width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.25);transition:background .3s"></span>
+
+</div>
+</div>
+<div style="padding:15px 17px">
+<div style="font:500 17.5px/1.2 var(--display);color:var(--ink);margin-bottom:5px">The Orange Initiative <span style="font-size:.65em;color:var(--accText)">↗</span></div>
+<div style="font:400 11px/1 var(--mono);color:var(--accText);letter-spacing:.08em;margin-bottom:7px">MY ROLE: LOGO &amp; BRAND DESIGN</div>
+<div style="font:400 14px/1.55 var(--font);color:var(--dim)">I designed the logo and brand book for this humanitarian organisation, along with their visiting card and graphics.</div>
+</div>
+</a>
+<a class="hov1" href="https://www.behance.net/gallery/214883453/Credible-Tools-Logo" target="_blank" style="text-decoration:none;color:inherit;display:block;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel)">
+<div style="aspect-ratio:16/9;overflow:hidden;background:#fff"><img src="uploads/credible-tools-logo.png" alt="Credible Tools logo" style="width:100%;height:100%;object-fit:contain;display:block"></div>
+<div style="padding:15px 17px">
+<div style="font:500 17.5px/1.2 var(--display);color:var(--ink);margin-bottom:5px">Credible Tools <span style="font-size:.65em;color:var(--accText)">↗</span></div>
+<div style="font:400 11px/1 var(--mono);color:var(--accText);letter-spacing:.08em;margin-bottom:7px">MY ROLE: LOGO DESIGN</div>
+<div style="font:400 14px/1.55 var(--font);color:var(--dim)">I created multiple versions of the logo along with its meaning and iterations, finally landing on one logo for the IT company.</div>
+</div>
+</a>
+<div style="border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel)">
+<div style="aspect-ratio:16/9;overflow:hidden;background:#fff"><img src="uploads/usaid.webp" alt="USAID Nepal logo" style="width:100%;height:100%;object-fit:contain;display:block"></div>
+<div style="padding:15px 17px">
+<div style="font:500 17.5px/1.2 var(--display);color:var(--ink);margin-bottom:5px">USAID Nepal</div>
+<div style="font:400 11px/1 var(--mono);color:var(--accText);letter-spacing:.08em;margin-bottom:7px">MY ROLE: GRAPHIC DESIGN</div>
+<div style="font:400 14px/1.55 var(--font);color:var(--dim)">Onsite meetings with the directors to plan and gather requirements. Designed awareness program brochures and graphics for events.</div>
+</div>
+</div>
+</div>
+<div data-mobile-pad="" style="padding:0 34px">
+<div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:44px 0 18px;margin-top:20px;border-top:1px solid var(--line)">
+<span data-sec="05" style="font:400 13px/1 var(--mono);color:var(--accText)">05</span>
 <div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
 <h2 data-mobile-secleft="" style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Freelance &amp; independent</h2>
 <span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">CREATIVE CLIENT WORKS</span>
@@ -450,62 +530,6 @@ body.sidebar-collapsed [data-sidebar-toggle] [data-sb-close]{display:none}
 </div>
 <div data-mobile-pad="" style="padding:0 34px">
 <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:44px 0 18px;margin-top:20px;border-top:1px solid var(--line)">
-<span data-sec="05" style="font:400 13px/1 var(--mono);color:var(--accText)">05</span>
-<div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
-<div data-mobile-secleft="" style="display:flex;align-items:center;gap:10px">
-<img src="uploads/ghumante-logo.jpeg" alt="Ghumante logo" style="height:24px;width:24px;border-radius:5px;display:block;object-fit:cover">
-<h2 style="margin:0;font:500 25px/1.2 var(--display);color:var(--ink);letter-spacing:-.018em">Ghumante: drone, videography &amp; photography</h2>
-</div>
-<span data-mobile-secmeta="" style="font:400 12.5px/1.5 var(--mono);color:var(--meta);text-align:right">2025–2026</span>
-</div>
-</div>
-</div>
-
-<div data-mobile-stack="" style="padding:0 34px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
-<div style="position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden"><img src="uploads/ghumante-1.webp" alt="Ghumante crew in the Langtang valley at sunrise" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
-</div>
-<div style="display:flex;flex-direction:column;gap:12px">
-<div style="position:relative;aspect-ratio:16/10;border-radius:4px;overflow:hidden"><img src="uploads/ghumante-2.webp" alt="Ghumante crew outside a mountain lodge" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
-<div style="border:1px solid var(--line);border-radius:4px;padding:16px 18px 18px;background:var(--panel);flex:1">
-<div style="font:500 20px/1.2 var(--display);color:var(--ink);margin-bottom:6px">Ghumante</div>
-<div style="font:400 12px/1 var(--mono);color:var(--accText);letter-spacing:.1em;margin-bottom:8px">MY ROLE: DRONE OPERATOR, VIDEOGRAPHER &amp; EDITOR</div>
-<div style="font:400 15px/1.55 var(--font);color:var(--dim)">I traversed the eastern Himalayas along the border of India and Nepal to document the lack of roads to Sandakpur from the Nepal side, and documented an IFMGA Mountain Guide training course with Sherpas in winter at Tsho Rolpa.</div>
-<div style="font:400 15px/1.55 var(--font);color:var(--dim);margin-top:10px">I operated the drone across varied terrain and weather in the Himalayas, then cut the footage in DaVinci Resolve, handling my own sound design and music selection.</div>
-</div>
-</div>
-</div>
-
-<div style="padding:12px 34px 0">
-<div style="font:600 12px/1 var(--mono);color:var(--acc);letter-spacing:.1em;margin-bottom:10px">VIDEOS I EDITED, LINKED BELOW</div>
-<div data-mobile-2col="" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
-<a class="hov1" href="https://www.youtube.com/watch?v=f5plXwVnXuk" target="_blank" style="position:relative;display:block;border-radius:4px;overflow:hidden;aspect-ratio:16/9">
-<img src="uploads/ghumante-vid1-maipokhari.jpg" alt="Ilam Sandakpur series Episode I, Maipokhari" style="width:100%;height:100%;object-fit:cover;display:block">
-<div style="position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center">
-<div style="width:36px;height:36px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.4)"><span style="border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--accInk);margin-left:2px"></span></div>
-</div>
-</a>
-<a class="hov1" href="https://www.youtube.com/watch?v=7K-3D1sDuCQ" target="_blank" style="position:relative;display:block;border-radius:4px;overflow:hidden;aspect-ratio:16/9">
-<img src="uploads/ghumante-vid2-todke.jpg" alt="Ilam Sandakpur series Episode II, Todke Jharana, Diamond Dhunga and Somelakmalung" style="width:100%;height:100%;object-fit:cover;display:block">
-<div style="position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center">
-<div style="width:36px;height:36px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.4)"><span style="border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--accInk);margin-left:2px"></span></div>
-</div>
-</a>
-<a class="hov1" href="https://www.youtube.com/watch?v=FT6gU-goEtw" target="_blank" style="position:relative;display:block;border-radius:4px;overflow:hidden;aspect-ratio:16/9">
-<img src="uploads/ghumante-vid3-sandakpur1.jpg" alt="Sandakpur Phalelung Trek Episode I" style="width:100%;height:100%;object-fit:cover;display:block">
-<div style="position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center">
-<div style="width:36px;height:36px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.4)"><span style="border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--accInk);margin-left:2px"></span></div>
-</div>
-</a>
-<a class="hov1" href="https://www.youtube.com/watch?v=8oFY0mWbxPE" target="_blank" style="position:relative;display:block;border-radius:4px;overflow:hidden;aspect-ratio:16/9">
-<img src="uploads/ghumante-vid4-sandakpur2.jpg" alt="Sandakpur Phalelung Trek Episode II" style="width:100%;height:100%;object-fit:cover;display:block">
-<div style="position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center">
-<div style="width:36px;height:36px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.4)"><span style="border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--accInk);margin-left:2px"></span></div>
-</div>
-</a>
-</div>
-</div>
-<div data-mobile-pad="" style="padding:0 34px">
-<div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:baseline;padding:44px 0 18px;margin-top:20px;border-top:1px solid var(--line)">
 <span data-sec="06" style="font:400 13px/1 var(--mono);color:var(--accText)">06</span>
 <div data-mobile-secrow="" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
 <div data-mobile-secleft="" style="display:flex;align-items:center;gap:10px">
@@ -549,8 +573,20 @@ body.sidebar-collapsed [data-sidebar-toggle] [data-sb-close]{display:none}
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accInk)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
 </button>
 
+<div data-note="" role="dialog" aria-label="A quick note" aria-hidden="true">
+<button data-note-x="" onclick="closeNote()" aria-label="Dismiss">✕</button>
+<div data-note-head="">
+<span data-note-icon=""><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle></svg></span>
+<div>
+<div data-note-title="">Hey, got a second? 👋</div>
+<div data-note-body="">I started an Instagram just to play with AI video creation, all made by me, purely for the fun of it.</div>
+</div>
+</div>
+<a data-note-cta="" href="https://www.instagram.com/ai_desaign?lqvp=bW9sMzhsbzduMmx0&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">@ai_desaign <span>→</span></a>
+</div>
+<button data-note-launch="" onclick="openNote()" aria-label="Show the note again" title="See my AI video account"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle></svg></button>
 </div></x-dc>
 
-<script src="script.js?v=8"></script>
+<script src="script.js?v=12"></script>
 </body>
 </html>

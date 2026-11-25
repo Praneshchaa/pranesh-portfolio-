@@ -67,6 +67,39 @@ function toggleSidebar() {
   document.body.classList.toggle('sidebar-collapsed');
 }
 
+// ---- Instagram nudge (film page only). The card reveals itself via CSS animation,
+// so it still appears if this script is cached, blocked or fails; JS handles dismiss/reopen.
+// Dismissing collapses it into a small launcher button that stays available. ----
+function closeNote() {
+  const el = document.querySelector('[data-note]');
+  if (!el) return;
+  el.classList.add('note-off');
+  el.classList.remove('note-on');
+  el.setAttribute('aria-hidden', 'true');
+  document.body.classList.add('note-dismissed');
+  document.body.classList.remove('note-open');
+}
+function openNote() {
+  const el = document.querySelector('[data-note]');
+  if (!el) return;
+  el.classList.remove('note-off');
+  el.classList.add('note-on');
+  el.setAttribute('aria-hidden', 'false');
+  document.body.classList.remove('note-dismissed');
+  document.body.classList.add('note-open');
+}
+(function noteInit() {
+  const el = document.querySelector('[data-note]');
+  if (!el) return;
+  setTimeout(() => {
+    if (!el.classList.contains('note-off')) {
+      el.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('note-open');
+    }
+  }, 2200);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNote(); });
+})();
+
 function setArticleHover(which) {
   document.querySelectorAll('[data-preview]').forEach(el => {
     const on = el.dataset.preview === which;
