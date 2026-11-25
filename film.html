@@ -93,7 +93,9 @@ body.note-open [data-scrolltop-btn]{opacity:0!important;pointer-events:none!impo
 [data-shell]{display:flex;align-items:stretch}
 [data-mobile-content]{flex:1 1 auto;min-width:0}
 [data-mobile-sidebar]{flex:0 0 250px;box-sizing:border-box;min-width:0;animation:sidebarSlideIn .8s cubic-bezier(.16,.8,.3,1) .15s backwards;transition:flex-basis .55s cubic-bezier(.4,0,.2,1),padding .55s cubic-bezier(.4,0,.2,1),border-right-width .55s cubic-bezier(.4,0,.2,1),opacity .4s ease}
-[data-mobile-static]{width:205px}
+[data-mobile-static]{width:205px;z-index:81}
+body.sidebar-collapsed [data-mobile-static]{pointer-events:none}
+body.sidebar-collapsed [data-sidebar-toggle]{pointer-events:auto}
 [data-mobile-static] > *:not([data-sidebar-toggle]){transition:opacity .3s ease}
 body.sidebar-collapsed [data-mobile-sidebar]{flex-basis:0;padding-left:0!important;padding-right:0!important;border-right-width:0!important}
 body.sidebar-collapsed [data-mobile-static] > *:not([data-sidebar-toggle]){opacity:0;pointer-events:none}
