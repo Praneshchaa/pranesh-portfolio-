@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# source video masters (ship the transcoded .mp4 instead)
+*.mov
+
+# editor
+.vscode/
+
+# documents
+*.docx

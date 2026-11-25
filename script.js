@@ -28,10 +28,12 @@ function toggleNav() {
   else openNav();
 }
 
+// data-rail drives the scroll-spy highlight; data-rail-target, when present,
+// overrides which section the click jumps to
 function railClick(e) {
-  const rail = e.currentTarget.dataset.rail;
+  const el = e.currentTarget;
   if (document.body.classList.contains('nav-open')) closeNav();
-  const target = document.querySelector(`[data-sec="${rail}"]`);
+  const target = document.querySelector(`[data-sec="${el.dataset.railTarget || el.dataset.rail}"]`);
   if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -58,6 +60,12 @@ function updateScrolledState() {
 }
 window.addEventListener('scroll', updateScrolledState, { passive: true });
 updateScrolledState();
+
+// ---- desktop collapsible sidebar: always visible by default, collapsed/reopened
+// by the chevron button sitting on the sidebar's edge ----
+function toggleSidebar() {
+  document.body.classList.toggle('sidebar-collapsed');
+}
 
 function setArticleHover(which) {
   document.querySelectorAll('[data-preview]').forEach(el => {
